@@ -11,7 +11,7 @@ interface Log {
 export interface Props {
   logs: Log[];
   depth?: number;
-  container?: React.MutableRefObject<any>;
+  container?: React.MutableRefObject<any> | Function;
 }
 
 const getTreeByLogs = (logs) => {
@@ -55,6 +55,10 @@ const getTreeByLogs = (logs) => {
     }
   }
   return newLogs;
+};
+
+const getContainer = (container) => {
+  return typeof container === "function" ? container() : container.current;
 };
 
 const Wrap = styled.div`
@@ -164,7 +168,8 @@ const Catalogs: React.FC<Props> = ({ logs, container, ...props }) => {
   const ref = React.useRef(null);
   const tree = useMemo(() => getTreeByLogs(logs), [logs]);
   React.useEffect(() => {
-    if (container.current) {
+    const anchor = getContainer(container);
+    if (anchor) {
       const listener = (e) => {
         let { top, left } = ref.current.getBoundingClientRect();
         if (e.target.scrollTop > 10) {
@@ -177,13 +182,14 @@ const Catalogs: React.FC<Props> = ({ logs, container, ...props }) => {
           ref.current.style.top = "";
         }
       };
-      container.current.addEventListener("scroll", listener);
+      anchor.addEventListener("scroll", listener);
 
-      return () => container.current.removeEventListener("scroll", listener);
+      return () => anchor.removeEventListener("scroll", listener);
     }
   }, []);
   React.useEffect(() => {
-    if (container.current) {
+    const anchor = getContainer(container);
+    if (anchor) {
       const listener = (e) => {
         let findCurrent = (arr: Log[]) => {
           for (let i = 0; i < arr.length; i++) {
@@ -201,9 +207,9 @@ const Catalogs: React.FC<Props> = ({ logs, container, ...props }) => {
         };
         findCurrent(logs);
       };
-      container.current.addEventListener("scroll", listener);
+      anchor.addEventListener("scroll", listener);
 
-      return () => container.current.removeEventListener("scroll", listener);
+      return () => anchor.removeEventListener("scroll", listener);
     }
   }, [logs]);
 

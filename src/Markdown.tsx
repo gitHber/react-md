@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { parseAst } from "./utils";
 import * as Types from "./node";
 import * as MdComponents from "./MdComponents";
@@ -14,6 +14,7 @@ export interface Props
   extends Components,
     React.HTMLAttributes<HTMLDivElement> {
   content: string;
+  anchorEl?: React.MutableRefObject<any> | Function;
   disableCatalogs?: boolean;
   h?: Params[0][];
   lists?: {
@@ -107,76 +108,92 @@ const Wrap = styled.div`
   position: relative;
 `;
 
-const Markdown: React.FC<Props> = ({
-  content,
-  h = [
-    MdComponents.H1,
-    MdComponents.H2,
-    MdComponents.H3,
-    MdComponents.H4,
-    MdComponents.H5,
-    MdComponents.H6,
-  ],
-  paragraph = MdComponents.Paragraph,
-  code = Code,
-  inlineCode = MdComponents.InlineCode,
-  strong = MdComponents.Strong,
-  emphasis = MdComponents.Emphasis,
-  blockquote = MdComponents.Blockquote,
-  thematicBreak = MdComponents.ThematicBreak,
-  delete: del = MdComponents.Delete,
-  image = MdComponents.Image,
-  link = MdComponents.Link,
-  lists = { order: MdComponents.Ol, unorder: MdComponents.Ul },
-  listItem = MdComponents.ListItem,
-  table = MdComponents.Table,
-  tableRow = MdComponents.TableRow,
-  tableCells = { th: MdComponents.Th, td: MdComponents.Td },
-  html = "div",
-  disableCatalogs = false,
-  ...props
-}) => {
-  const ref = React.useRef();
-  const root = React.useMemo(() => {
-    return parseAst(content) as Types.RootNode;
-  }, [content]);
-  const [children, heads] = transformAstToReact(root, {
-    h,
-    code,
-    strong,
-    emphasis,
-    blockquote,
-    thematicBreak,
-    delete: del,
-    inlineCode,
-    image,
-    link,
-    lists,
-    listItem,
-    table,
-    tableRow,
-    tableCells,
-    paragraph,
-    html,
-  });
+const Markdown = React.forwardRef<any, Props>(
+  (
+    {
+      content,
+      h = [
+        MdComponents.H1,
+        MdComponents.H2,
+        MdComponents.H3,
+        MdComponents.H4,
+        MdComponents.H5,
+        MdComponents.H6,
+      ],
+      paragraph = MdComponents.Paragraph,
+      code = Code,
+      inlineCode = MdComponents.InlineCode,
+      strong = MdComponents.Strong,
+      emphasis = MdComponents.Emphasis,
+      blockquote = MdComponents.Blockquote,
+      thematicBreak = MdComponents.ThematicBreak,
+      delete: del = MdComponents.Delete,
+      image = MdComponents.Image,
+      link = MdComponents.Link,
+      lists = { order: MdComponents.Ol, unorder: MdComponents.Ul },
+      listItem = MdComponents.ListItem,
+      table = MdComponents.Table,
+      tableRow = MdComponents.TableRow,
+      tableCells = { th: MdComponents.Th, td: MdComponents.Td },
+      html = "div",
+      disableCatalogs = false,
+      anchorEl,
+      ...props
+    },
+    ref
+  ) => {
+    const nodeRef = useRef();
+    const handleRef = (refValue) => {
+      nodeRef.current = refValue;
+      if (ref) {
+        if (typeof ref === "function") {
+          ref(refValue);
+        } else {
+          ref.current = refValue;
+        }
+      }
+    };
+    const root = React.useMemo(() => {
+      return parseAst(content) as Types.RootNode;
+    }, [content]);
+    const [children, heads] = transformAstToReact(root, {
+      h,
+      code,
+      strong,
+      emphasis,
+      blockquote,
+      thematicBreak,
+      delete: del,
+      inlineCode,
+      image,
+      link,
+      lists,
+      listItem,
+      table,
+      tableRow,
+      tableCells,
+      paragraph,
+      html,
+    });
 
-  return (
-    <Wrap {...props} ref={ref}>
-      {children}
-      {!disableCatalogs && (
-        <Catalogs
-          container={ref}
-          logs={heads
-            .map((h) => ({
-              depth: h.depth,
-              title: h.children[0]?.value,
-              hash: h.id,
-            }))
-            .filter((i) => i.depth < 4)}
-        />
-      )}
-    </Wrap>
-  );
-};
+    return (
+      <Wrap {...props} ref={handleRef}>
+        {children}
+        {!disableCatalogs && (
+          <Catalogs
+            container={nodeRef}
+            logs={heads
+              .map((h) => ({
+                depth: h.depth,
+                title: h.children[0]?.value,
+                hash: h.id,
+              }))
+              .filter((i) => i.depth < 4)}
+          />
+        )}
+      </Wrap>
+    );
+  }
+);
 
 export default React.memo(Markdown);

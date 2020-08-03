@@ -67,7 +67,7 @@ export default () => {
   const [content, setContent] = useState(md);
 
   const handleEditorDidMount = useCallback((_, editor) => {}, []);
-  console.log(parseAst(content));
+  const ref = useRef();
   return (
     <Wrap>
       <ControlledEditor

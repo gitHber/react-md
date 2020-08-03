@@ -1,15 +1,21 @@
 {
   "name": "@githber/react-md",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.3",
   "description": "react markdown parse and Component",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "files": [
+    "lib",
+    "es"
+  ],
   "scripts": {
     "build": "npm run clean && father build",
     "build:watch": "father build --watch",
     "clean": "rm -rf ./es ./lib",
     "now-build": "npm run doc:build",
     "doc:dev": "dumi dev",
-    "doc:build": "dumi build"
+    "doc:build": "dumi build",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -26,12 +32,14 @@
     "@types/styled-components": "^5.1.1",
     "dumi": "^1.0.33",
     "father": "^2.29.5",
-    "styled-components": "^5.1.1",
-    "typescript": "^3.9.7"
+    "typescript": "^3.9.7",
+    "monaco-editor": "^0.20.0"
   },
   "dependencies": {
-    "monaco-editor": "^0.20.0",
-    "react-syntax-highlighter": "^13.2.1"
+    "react-syntax-highlighter": "^13.2.1",
+    "remark-parse": "^8.0.3",
+    "styled-components": "^5.1.1",
+    "unified": "^9.1.0"
   },
   "peerDependencies": {
     "@types/react": "^16.8.6",
