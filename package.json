@@ -1,0 +1,40 @@
+{
+  "name": "@githber/react-md",
+  "version": "0.0.1-alpha.1",
+  "description": "react markdown parse and Component",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run clean && father build",
+    "build:watch": "father build --watch",
+    "clean": "rm -rf ./es ./lib",
+    "now-build": "npm run doc:build",
+    "doc:dev": "dumi dev",
+    "doc:build": "dumi build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitHber/react-md.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gitHber/react-md/issues"
+  },
+  "homepage": "https://github.com/gitHber/react-md#readme",
+  "devDependencies": {
+    "@types/styled-components": "^5.1.1",
+    "dumi": "^1.0.33",
+    "father": "^2.29.5",
+    "styled-components": "^5.1.1",
+    "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "monaco-editor": "^0.20.0",
+    "react-syntax-highlighter": "^13.2.1"
+  },
+  "peerDependencies": {
+    "@types/react": "^16.8.6",
+    "react": "^16.8.6"
+  }
+}

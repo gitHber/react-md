@@ -1,0 +1,57 @@
+Arguments: 
+  /Users/kunlee/.nvm/versions/node/v12.16.3/bin/node /Users/kunlee/.nvm/versions/node/v12.16.3/bin/yarn add --peer react @types/react
+
+PATH: 
+  /Users/kunlee/.nvm/versions/node/v12.16.3/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/kunlee/.nvm/versions/node/v12.16.3/bin:/usr/local/scala/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin:/usr/local/scala/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin
+
+Yarn version: 
+  1.22.4
+
+Node version: 
+  12.16.3
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: EINVAL: invalid argument, unlink '/Users/kunlee/Projects/react-md/node_modules/@umijs/preset-built-in/node_modules/serialize-javascript'
+
+npm manifest: 
+  {
+    "name": "@githber/react-md",
+    "version": "0.0.1-alpha.1",
+    "description": "react markdown parse and Component",
+    "main": "index.js",
+    "scripts": {
+      "build": "npm run clean && father build",
+      "build:watch": "father build --watch",
+      "now-build": "npm run doc:build",
+      "doc:dev": "dumi dev",
+      "doc:build": "dumi build"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/gitHber/react-md.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/gitHber/react-md/issues"
+    },
+    "homepage": "https://github.com/gitHber/react-md#readme",
+    "devDependencies": {
+      "dumi": "^1.0.33",
+      "father": "^2.29.5",
+      "typescript": "^3.9.7"
+    },
+    "dependencies": {
+      "@babel/parser": "^7.10.5"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
