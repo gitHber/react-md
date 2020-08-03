@@ -33,7 +33,7 @@
     "dumi": "^1.0.33",
     "father": "^2.29.5",
     "typescript": "^3.9.7",
-    "monaco-editor": "^0.20.0"
+    "@monaco-editor/react": "^3.4.2"
   },
   "dependencies": {
     "react-syntax-highlighter": "^13.2.1",
