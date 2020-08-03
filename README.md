@@ -17,7 +17,7 @@ yarn add @githber/react-md
 import { Markdown } from "@githber/react-md";
 
 export () => <Markdown
-  content={{`# hello`}}
+  content={`# hello`}
 />
 ```
 
