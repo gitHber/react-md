@@ -1,6 +1,5 @@
 import React from "react";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 export interface Props {
   value: string;
@@ -19,7 +18,6 @@ export interface Props {
 const Code: React.FC<Props> = ({ value, lang, showLineNumbers, ...props }) => {
   return (
     <SyntaxHighlighter
-      style={docco}
       language={lang}
       showLineNumbers={
         showLineNumbers === undefined

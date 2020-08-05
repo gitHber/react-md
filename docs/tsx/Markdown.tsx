@@ -65,9 +65,8 @@ const Wrap = styled.div`
 `;
 export default () => {
   const [content, setContent] = useState(md);
-
   const handleEditorDidMount = useCallback((_, editor) => {}, []);
-  const ref = useRef();
+
   return (
     <Wrap>
       <ControlledEditor

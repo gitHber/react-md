@@ -106,6 +106,13 @@ const transformAstToReact = (
 
 const Wrap = styled.div`
   position: relative;
+  color: #24292e;
+  box-sizing: border-box;
+  font-size: 14px;
+  tab-size: 4;
+  font-family: "-apple-system", BlinkMacSystemFont, "\5FAE\8F6F\96C5\9ED1",
+    "PingFang SC", Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei",
+    SimSun, "\5B8B\4F53", Heiti, "\9ED1\4F53", sans-serif;
 `;
 
 const Markdown = React.forwardRef<any, Props>(

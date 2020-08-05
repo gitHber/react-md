@@ -1,68 +1,51 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import React from "react";
 
+const hCss = css`
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+`;
+
 export const H1 = styled.h1`
-  font-size: 30px;
-  margin-bottom: 5px;
-  color: #333;
-  margin-top: 35px;
-  line-height: 1.5;
-  padding-bottom: 5px;
+  font-size: 2.25em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #eaecef;
+  ${hCss}
 `;
 export const H2 = styled.h2`
-  font-size: 24px;
-  margin-bottom: 5px;
-  color: #333;
-  margin-top: 25px;
-  line-height: 1.5;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #ececec;
+  font-size: 1.75em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid #eaecef;
+  ${hCss}
 `;
 export const H3 = styled.h3`
-  font-size: 18px;
-  margin-bottom: 10px;
-  color: #333;
-  margin-top: 35px;
-  line-height: 1.5;
-  padding-bottom: 0;
+  font-size: 1.5em;
+  ${hCss}
 `;
 export const H4 = styled.h4`
-  font-size: 16px;
-  margin-bottom: 10px;
-  color: #333;
-  margin-top: 35px;
-  line-height: 1.5;
-  padding-bottom: 5px;
+  font-size: 1.25em;
+  ${hCss}
 `;
 export const H5 = styled.h5`
-  font-size: 15px;
-  margin-bottom: 10px;
-  color: #333;
-  margin-top: 35px;
-  line-height: 1.5;
-  padding-bottom: 5px;
+  font-size: 1em;
+  ${hCss}
 `;
 export const H6 = styled.h6`
-  font-size: 12px;
-  margin-bottom: 10px;
-  margin-top: 5px;
-  color: #333;
-  line-height: 1.5;
-  padding-bottom: 5px;
+  font-size: 1em;
+  color: #6a737d;
+  ${hCss}
 `;
 
 export const Paragraph = styled.p`
   word-break: break-word;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 1.75;
-  line-height: inherit;
-  margin-top: 22px;
-  margin-bottom: 22px;
+  margin-top: 0;
+  margin-bottom: 16px;
 `;
 
 export const Strong = styled.strong`
-  font-weight: 700;
+  font-weight: 600;
 `;
 
 export const Emphasis = styled.em``;
@@ -70,19 +53,35 @@ export const Delete = styled.del``;
 
 export const Blockquote = styled.blockquote`
   color: #666;
-  padding: 1px 23px;
+  padding: 4px 23px;
   margin: 22px 0;
   border-left: 4px solid #cbcbcb;
   background-color: #f8f8f8;
+  & > :first-child {
+    margin-top: 0;
+  }
+  & > :last-child {
+    margin-bottom: 0;
+  }
 `;
 export const ThematicBreak = styled.hr`
-  border: none;
-  border-top: 1px solid #ddd;
-  margin-top: 2.7rem;
-  margin-bottom: 2.7rem;
+  border-bottom-color: #eee;
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0;
+  overflow: hidden;
   box-sizing: content-box;
-  height: 0;
-  overflow: visible;
+  ::before {
+    display: table;
+    content: "";
+  }
+  ::after {
+    display: table;
+    clear: both;
+    content: "";
+  }
 `;
 
 const ImageWrap = styled.figure`
@@ -106,55 +105,66 @@ export const Link = styled.a.attrs((p) => ({
   // @ts-ignore
   href: p.url,
 }))`
-  color: #0269c8;
-  border-bottom: 1px solid #d1e9ff;
+  color: #0366d6;
   text-decoration: none;
   cursor: pointer;
 `;
 
 export const Ul = styled.ul`
-  padding-left: 28px;
+  padding-left: 2em;
+  margin-top: 0;
+  margin-bottom: 16px;
   li {
     margin-bottom: 0;
+    p {
+      margin-bottom: 0;
+    }
   }
 `;
 export const Ol = styled.ol`
-  padding-left: 28px;
+  padding-left: 2em;
+  margin-top: 0;
+  margin-bottom: 16px;
   li {
     padding-left: 6px;
     margin-bottom: 0;
+    p {
+      margin-bottom: 0;
+    }
   }
 `;
 export const ListItem = styled.li``;
 export const Table = styled.table`
-  font-size: 1rem;
   width: auto;
-  max-width: 100%;
+  display: table;
   overflow: auto;
-  border: 1px solid #f6f6f6;
-  border-collapse: separate;
-  box-sizing: border-box;
-  border-spacing: 2px;
+  margin-top: 0;
+  margin-bottom: 16px;
+  border-spacing: 0;
+  border-collapse: collapse;
   thead {
     background: #f6f6f6;
     color: #000;
     text-align: left;
   }
   tr:nth-child(2n) {
-    background-color: #fcfcfc;
+    background-color: #f6f8fa;
   }
 `;
 
 export const TableRow = styled.tr`
-  td,
-  th {
-    padding: 1rem 0.6rem;
-    line-height: 2rem;
-  }
+  background-color: #fff;
+  border-top: 1px solid #c6cbd1;
 `;
-export const Th = styled.th``;
+export const Th = styled.th`
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
+  font-weight: 600;
+`;
 export const Td = styled.td`
-  min-width: 10rem;
+  word-break: break-all;
+  padding: 6px 13px;
+  border: 1px solid #dfe2e5;
 `;
 export const InlineCode = styled.code`
   background-color: #fff5f5;
