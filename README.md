@@ -1,20 +1,20 @@
 <div align="center">
-<h1>@githber/react-md</h1>
+<h1>@kun.js/react-md</h1>
 A react markdown component, support customize all component！
 </div>
 
 ## install
 
 ```shell
-npm i -S @githber/react-md
+npm i -S @kun.js/react-md
 // or
-yarn add @githber/react-md
+yarn add @kun.js/react-md
 ```
 
 ## usage
 
 ```js
-import { Markdown } from "@githber/react-md";
+import { Markdown } from "@kun.js/react-md";
 
 export () => <Markdown
   content={`# hello`}

@@ -1,5 +1,5 @@
 {
-  "name": "@githber/react-md",
+  "name": "@kun.js/react-md",
   "version": "0.0.1-alpha.5",
   "description": "react markdown parse and Component",
   "main": "lib/index.js",
