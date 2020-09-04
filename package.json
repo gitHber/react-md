@@ -1,6 +1,6 @@
 {
   "name": "@kun.js/react-md",
-  "version": "0.0.1-alpha.5",
+  "version": "0.0.1-alpha.1",
   "description": "react markdown parse and Component",
   "main": "lib/index.js",
   "module": "es/index.js",
