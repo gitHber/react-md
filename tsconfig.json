@@ -12,8 +12,8 @@
     "types": ["react", "node"],
     "baseUrl": "./",
     "paths": {
-      "@githber/react-md": ["./src/"],
-      "@githber/react-md/*": ["./src/*"]
+      "@kun.js/react-md": ["./src/"],
+      "@kun.js/react-md/*": ["./src/*"]
     }
   },
   "exclude": ["**/build/", "**/*.test.ts", "**/node_modules"]

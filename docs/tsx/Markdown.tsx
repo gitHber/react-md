@@ -3,7 +3,7 @@
  * compact: true
  */
 import React, { useState, useRef, useMemo, useCallback } from "react";
-import { parseAst, Markdown } from "@githber/react-md";
+import { parseAst, Markdown } from "@kun.js/react-md";
 import { ControlledEditor } from "@monaco-editor/react";
 
 import styled from "styled-components";
