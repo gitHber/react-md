@@ -31,7 +31,7 @@
   "devDependencies": {
     "@types/styled-components": "^5.1.1",
     "dumi": "^1.0.33",
-    "father": "^2.29.5",
+    "father": "^4.6.2",
     "typescript": "^3.9.7",
     "@monaco-editor/react": "^3.4.2"
   },
